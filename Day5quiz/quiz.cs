@@ -11,16 +11,16 @@ namespace Day5quiz
         static void Main(string[] args)
         {
             string input;
-            bool needtorepeat = true;
+            bool needtorepeat = true; // if the user enter wrong pin, we need to ask them to enter again!
             while (needtorepeat)
             {
                 int total = 0; char checksum = ' ';
                 Console.Write("Enter a matriculation number : ");
                 input = Console.ReadLine();
-                input = input.ToUpper();
-                if (input.Length == 7)
+                input = input.ToUpper();// input string to upper case, so we don't need to worry about lower case!
+                if (input.Length == 7) // if the input isn't meet minumun length 7, we should ask them to enter again!
                 {
-                    string a = input[0].ToString();
+                    string a = input[0].ToString(); // first char of the string to check whether it is A or not!
                     if (a != "A")
                     {
                         Console.WriteLine("Invalid");
@@ -29,20 +29,20 @@ namespace Day5quiz
 
                     else
                     {
-                        string num = input.Substring(1, 5);
+                        string num = input.Substring(1, 5);// take the numbers from string , so we can compute checksum!
 
                         for (int i = 0; i <= 4; i++)
                         {
                             int j = 6;
 
-                            total += (num[i] * j);
+                            total += (num[i] * j); // compute total result based on all the numbers that user entered from the middle of string!
                             j--;
                         }
 
                         int remain = total % 5;
-                        checksum = input[6];
+                        checksum = input[6]; // take the last charcter of the string! , so we can check whether it is valid or not!
 
-                        switch (checksum)
+                        switch (checksum) 
                         {
                             case 'O':
                                 if (remain == 0)
